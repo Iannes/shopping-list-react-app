@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Shell from './components/Shell'
 import AddItem from './components/AddItem'
 import List from './components/List'
+import Loader from './components/Loader';
 import './App.css';
 
 class App extends Component {
@@ -10,14 +11,22 @@ class App extends Component {
 
       super(props)
       this.handleSubmit = this.handleSubmit.bind(this)
-      this.handleChange = this.handleChange.bind(this)
+      this.handleChange = this.handleChange.bind(this)      
 
     }
+
+    
 
     state = {
       list: [],      
       inputValue:'' ,
       isLoading: true,     
+    }
+
+    componentDidMount() {
+      this.setState({
+        isLoading: false
+      })
     }
 
 
@@ -36,10 +45,12 @@ class App extends Component {
       })      
     }
 
+
   render() {
     const { list } = this.state
     return (      
-        <Shell>                    
+        <Shell>  
+            <Loader loading={this.state.isLoading}/>                  
             <List list={list}/>
             <AddItem 
                 getNewItem={this.handleChange}                 
