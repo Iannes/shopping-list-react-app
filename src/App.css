@@ -20,31 +20,96 @@ html {
   overflow: hidden; }
 
 body {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -webkit-align-content: stretch;
-      -ms-flex-line-pack: stretch;
-          align-content: stretch;
-  background: #ececec; }
+  flex-direction: column;
+  flex-wrap: nowrap;        
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  background: #ececec; 
+}
 
+form {
+  max-width: 75%;
+  margin: auto;
+}
+
+input {
+  height: 2rem;
+}
+
+ul.shopping-list {
+  max-width: 80%;
+  margin: 20px auto;
+  list-style: none;
+}
+
+li {
+  padding: 1rem 0 .5rem;
+  text-transform: capitalize;
+  border-bottom: 1px dotted grey;
+}
+
+
+.shopping-textfield {
+  display: block;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.shopping-textfield > label {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shopping-textfield--float-label > label {
+  transition: all .4s ease-in-out;
+  transform: translate(0, 15px);
+  font-size: 16px;
+  line-height: 32px;
+  color: rgba(0, 0, 0, 0.26);
+  text-overflow: clip;
+  cursor: text;
+  pointer-events: none;
+}
+
+.shopping-textfield > input, .shopping-textfield > textarea {
+  box-sizing: border-box;
+  display: block;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  outline: 0;
+  width: 100%;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: inherit;
+  background-image: none;
+}
+.shopping-textfield > input:focus, .shopping-textfield > textarea:focus {
+  border-color: #5f387b;
+  border-width: 2px;
+}
+.shopping-textfield > input:focus ~ label, .shopping-textfield > textarea:focus ~ label {
+  color: #5f387b;
+  transform: translate(0, 0);
+  font-size: 12px;
+  line-height: 15px;
+  text-overflow: ellipsis;
+}
 .header {
   width: 100%;
   height: 56px;
@@ -55,34 +120,15 @@ body {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
   padding: 16px 16px 0 16px;
   will-change: transform;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
-  -webkit-transition: -webkit-transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
-  transition: -webkit-transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
   transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
-  transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s, -webkit-transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
-  z-index: 1000; }
+  z-index: 1000; 
+}
   .header .headerButton {
     width: 24px;
     height: 24px;
@@ -104,79 +150,67 @@ body {
   font-weight: 400;
   font-size: 20px;
   margin: 0;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1; }
+  flex: 1; 
+}
 
 .loader {
   left: 50%;
   top: 50%;
   position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%); 
+
+  }
   .loader #spinner {
     box-sizing: border-box;
     stroke: #673AB7;
-    stroke-width: 3px;
-    -webkit-transform-origin: 50%;
-            transform-origin: 50%;
-    -webkit-animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
-            animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; }
+    stroke-width: 3px;    
+    transform-origin: 50%;
+    animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; }
 
 @-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0);
+  from {    
             transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(450deg);
+  to {    
             transform: rotate(450deg); } }
 
 @keyframes rotate {
-  from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
+  from {    
+    transform: rotate(0); }
   to {
-    -webkit-transform: rotate(450deg);
-            transform: rotate(450deg); } }
+    transform: rotate(450deg); } }
 
 @-webkit-keyframes line {
   0% {
     stroke-dasharray: 2, 85.964;
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
+    transform: rotate(0); }
   50% {
     stroke-dasharray: 65.973, 21.9911;
     stroke-dashoffset: 0; }
   100% {
     stroke-dasharray: 2, 85.964;
     stroke-dashoffset: -65.973;
-    -webkit-transform: rotate(90deg);
+    
             transform: rotate(90deg); } }
 
 @keyframes line {
   0% {
     stroke-dasharray: 2, 85.964;
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
+    transform: rotate(0); }
   50% {
     stroke-dasharray: 65.973, 21.9911;
     stroke-dashoffset: 0; }
   100% {
     stroke-dasharray: 2, 85.964;
     stroke-dashoffset: -65.973;
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg); } }
+    transform: rotate(90deg); } }
 
 .main {
   padding-top: 60px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch; 
+}
 
 .dialog-container {
   background: rgba(0, 0, 0, 0.57);
@@ -188,7 +222,6 @@ body {
   opacity: 0;
   pointer-events: none;
   will-change: opacity;
-  -webkit-transition: opacity 0.333s cubic-bezier(0, 0, 0.21, 1);
   transition: opacity 0.333s cubic-bezier(0, 0, 0.21, 1); }
 
 .dialog-container--visible {
@@ -203,12 +236,9 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%) translateY(30px);
-          transform: translate(-50%, -50%) translateY(30px);
-  -webkit-transition: -webkit-transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s;
-  transition: -webkit-transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s;
+  transform: translate(-50%, -50%) translateY(30px);
   transition: transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s;
-  transition: transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s, -webkit-transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s; }
+}
 
 .dialog > div {
   padding-left: 24px;
@@ -231,6 +261,8 @@ body {
 
 .card {
   padding: 16px;
+  max-width: 50%;
+  margin: 1rem auto!important;
   position: relative;
   box-sizing: border-box;
   background: #fff;
