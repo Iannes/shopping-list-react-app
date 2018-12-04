@@ -45,8 +45,8 @@ ul.shopping-list {
 }
 
 @media(max-width: 767px) {
-  ul.shopping-list {
-
+  ul.shopping-list,
+  .card {
     max-width: 95%;
   }
 }
