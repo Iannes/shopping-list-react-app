@@ -44,6 +44,13 @@ ul.shopping-list {
   list-style: none;
 }
 
+@media(max-width: 767px) {
+  ul.shopping-list {
+
+    max-width: 95%;
+  }
+}
+
 li {
   padding: 1rem 0 .5rem;
   text-transform: capitalize;
