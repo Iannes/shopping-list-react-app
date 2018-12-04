@@ -7,8 +7,8 @@ export default class List extends Component {
     return (
       <section>
           <ul className="shopping-list">
-                {list && list.map(item => {
-                   return <li key={item}>{item}</li>
+                {list && list.map((item, i) => {
+                   return <li tabIndex={i} key={item}>{item}</li>
                 })}
           </ul>
       </section>
