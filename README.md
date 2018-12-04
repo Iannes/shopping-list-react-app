@@ -1,4 +1,4 @@
-# Shopping list react app
+# Shopping List PWA
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
