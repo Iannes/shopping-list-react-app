@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Button from './Button'
+// import {HandleButtonClick} from '../utils/HandleButtonClick'
 
-export default class Header extends Component {
-  render() {
+export const Header = (props) => {
+
     return (
-        <header className="header">
-            <h1 className="header__title">Shopping List</h1>
-            <button id="butRefresh" className="headerButton" aria-label="Refresh"></button>
-            <button id="butAdd" className="headerButton" aria-label="Add"></button>
+        <header data-list={props.dataList} className="header">
+            <h1 className="header__title">{props.title}</h1>            
+            <Button dataList={props.dataList}  handleButtonIdentifier='save' className="headerButton" text="Save"/>            
       </header>
-    )
-  }
+    )  
 }

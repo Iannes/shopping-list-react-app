@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class List extends Component {
-  render(props) {
+export const List = (props) => {
 
-    const { list } = this.props
+  const {list} = props
     return (
       <section>
           <ul className="shopping-list">
@@ -14,4 +13,3 @@ export default class List extends Component {
       </section>
     )
   }
-}

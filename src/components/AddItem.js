@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class AddItem extends Component {
-  render(props) {
+export const AddItem = (props) => {
+  
     return (   
-        <form onSubmit={this.props.addItem} className="shopping-form">   
+        <form onSubmit={props.addItem} className="shopping-form">   
             <article className="shopping-textfield shopping-textfield--float-label">
-                <input id="newItem" value={this.props.val} onChange={this.props.getNewItem} type="text" />
+                <input id="newItem" value={props.val} onChange={props.getNewItem} type="text" />
                 <label htmlFor="newItem">New Item</label>
             </article>
         </form>
     )
   }
-}

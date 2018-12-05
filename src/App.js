@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Shell from './components/Shell'
-import AddItem from './components/AddItem'
-import List from './components/List'
+import {AddItem} from './components/AddItem'
+import {List} from './components/List'
 import Loader from './components/Loader';
 import './App.css';
 
@@ -11,14 +11,13 @@ class App extends Component {
 
       super(props)
       this.handleSubmit = this.handleSubmit.bind(this)
-      this.handleChange = this.handleChange.bind(this)      
+      this.handleChange = this.handleChange.bind(this)    
 
     }
-
     
 
     state = {
-      list: [],      
+      list: JSON.parse(localStorage.getItem("cached")) || [],      
       inputValue:'' ,
       isLoading: true,     
     }
@@ -49,7 +48,7 @@ class App extends Component {
   render() {
     const { list } = this.state
     return (      
-        <Shell>  
+        <Shell dataList={[...this.state.list]}>  
             <Loader loading={this.state.isLoading}/>                  
             <List list={list}/>
             <AddItem 
