@@ -6,8 +6,8 @@ export const List = (props) => {
     return (
       <section>
           <ul className="shopping-list">
-                {list && list.map((item, i) => {
-                   return <li tabIndex={i} key={item}>{item}</li>
+                {list && list.map((item, i) => {                   
+                    return <li tabIndex={i} key={`${item}-${i}`}>{item}</li>                  
                 })}
           </ul>
       </section>
