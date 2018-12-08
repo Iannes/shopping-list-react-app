@@ -25,8 +25,10 @@ export default class Provider extends Component {
   }
 
   componentDidMount() {
+    const { list } = this.state
     this.setState({
-      isLoading: false
+      isLoading: false,
+      cached: list.length !== 0 ? true : false
     })
   }
 
