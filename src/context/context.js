@@ -77,7 +77,6 @@ export default class Provider extends Component {
     return (
       <MyContext.Provider value={{
         state: this.state,
-        growAYearOlder: this.growAYearOlder,
         handleClick: this.handleClick,
         handleSubmit: this.handleSubmit,
         handleChange: this.handleChange,
