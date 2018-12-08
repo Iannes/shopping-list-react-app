@@ -11,6 +11,8 @@ export default class Provider extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.cache = this.cache.bind(this)
     this.clearCache = this.clearCache.bind(this)
+    this.confirmAndDelete = this.confirmAndDelete.bind(this)
+    this.saveToStorage = this.saveToStorage.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -19,6 +21,7 @@ export default class Provider extends Component {
     list: JSON.parse(localStorage.getItem("cached")) || [],
     inputValue: '',
     isLoading: true,
+    cached: false
   }
 
   componentDidMount() {
@@ -38,7 +41,6 @@ export default class Provider extends Component {
   }
 
   handleChange(e) {
-
     this.setState({
       inputValue: e.target.value
     })
@@ -46,31 +48,42 @@ export default class Provider extends Component {
 
   cache() {
     const { list } = this.state
+    if(list.length === 0) {
+      alert('You need add at least one item to save')
+    } else {
+      this.saveToStorage(list)
+    }
+  }
+
+  saveToStorage(list) {
+    this.setState({
+      cached: true
+    })
     localStorage.setItem("cached", JSON.stringify(list))
     alert('All items saved :)')
   }
 
-  clearCache() {
-
+  confirmAndDelete() {
     let confirmed = window.confirm('Delete your shopping list?')
     if (confirmed) {
       localStorage.clear()
       this.setState({
-        list: []
+        list: [],
+        cached: false
       })
     } else {
-        return;
+      return;
     }
   }
 
+  clearCache() {
+    const { cached } = this.state
+    cached ? this.confirmAndDelete() : alert('There are no saved items to clear.')
+  }
+
   handleClick(props) {
-
-    if (props.text === "Save") {
-      this.cache()
-    } else {
-      this.clearCache()
-    }
-
+    // Check if it's the save or the clear button
+    props.text === "Save" ? this.cache() : this.clearCache();
   }
 
   render() {
