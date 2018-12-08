@@ -52,7 +52,7 @@ export default class Provider extends Component {
 
   clearCache() {
 
-    let confirmed = window.confirm('Are you sure?')
+    let confirmed = window.confirm('Delete your shopping list?')
     if (confirmed) {
       localStorage.clear()
       this.setState({
