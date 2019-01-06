@@ -9,7 +9,7 @@ export default class Button extends Component {
         <Fragment>
           <button
             onClick={() => context.handleClick(this.props)}
-            id={this.props.handleButtonIdentifier}
+            id={this.props.buttonId}
             className={this.props.className}
             aria-label={this.props.text}>
             {this.props.text}

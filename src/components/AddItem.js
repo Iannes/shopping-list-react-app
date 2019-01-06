@@ -8,7 +8,7 @@ export default class AddItem extends Component {
       {context => (
       <Fragment>
           <form onSubmit={context.handleSubmit} className="shopping-form">
-          <article className="shopping-textfield shopping-textfield--float-label">
+           <article className="shopping-textfield shopping-textfield--float-label">
               <input id="newItem" value={context.inputValue} onChange={context.handleChange} type="text" />
             <label htmlFor="newItem">New Item</label>
           </article>
